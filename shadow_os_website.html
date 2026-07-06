@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow OS — We Build the Business. You Build the Audience.</title>
+<meta name="description" content="We partner with micro-influencers (5K–150K followers) to build complete digital product businesses. You keep posting. We handle everything. 50/50 split. No upfront cost.">
+<meta property="og:title" content="Shadow OS — We Build the Business. You Build the Audience.">
+<meta property="og:description" content="We become your invisible backend team. Product, funnel, email, analytics — all built in 14 days. You keep creating. Revenue split 50/50.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;
+  --surface:#0E0E0E;
+  --card:#111111;
+  --card2:rgba(255,255,255,0.03);
+  --gold:#D4AF37;
+  --gold-dim:rgba(212,175,55,0.12);
+  --gold-glow:rgba(212,175,55,0.35);
+  --red:#D72638;
+  --red-dim:rgba(215,38,56,0.12);
+  --red-glow:rgba(215,38,56,0.4);
+  --text:#FFFFFF;
+  --muted:#8A8A8A;
+  --border:rgba(255,255,255,0.06);
+  --border-gold:rgba(212,175,55,0.15);
+  --r:14px;
+  --r-lg:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:rgba(212,175,55,0.3);border-radius:2px}
+
+/* ── NAVBAR ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
+nav.scrolled{background:rgba(5,5,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:1.05rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.nav-logo span{color:var(--gold)}
+.logo-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--red);color:#fff;padding:.5rem 1.25rem;border-radius:8px;font-size:.85rem;font-weight:600;transition:all .25s;white-space:nowrap}
+.nav-cta:hover{background:#e8293b;box-shadow:0 0 24px var(--red-glow)}
+.nav-mobile{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-mobile span{width:22px;height:2px;background:var(--text);border-radius:1px;transition:all .3s}
+
+/* ── HERO ── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:120px 2rem 80px}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:float 8s ease-in-out infinite}
+.orb-gold{width:500px;height:500px;background:radial-gradient(circle,#D4AF37 0%,transparent 70%);top:-100px;right:-100px;animation-delay:0s}
+.orb-red{width:400px;height:400px;background:radial-gradient(circle,#D72638 0%,transparent 70%);bottom:-80px;left:-80px;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-20px) scale(1.02)}66%{transform:translate(-15px,10px) scale(.98)}}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:860px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-h1{font-size:clamp(2.4rem,6vw,4.8rem);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:1.5rem}
+.hero-h1 .line-gold{color:var(--gold);display:block}
+.hero-h1 .line-white{color:#fff;display:block}
+.hero-p{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 auto 2.5rem;line-height:1.75;font-weight:400}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.btn-primary{background:var(--red);color:#fff;padding:.85rem 2rem;border-radius:10px;font-size:.95rem;font-weight:700;transition:all .25s;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:#e8293b;box-shadow:0 0 40px var(--red-glow);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:#fff;padding:.85rem 2rem;border-radius:10px;font-size:.95rem;font-weight:600;border:1px solid rgba(255,255,255,0.15);cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 24px var(--gold-glow)}
+.hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--gold);letter-spacing:-.03em;line-height:1}
+.stat-label{font-size:.78rem;color:var(--muted);font-weight:500;margin-top:.3rem;letter-spacing:.04em;text-transform:uppercase}
+.stat-divider{width:1px;background:var(--border);align-self:stretch}
+
+/* ── BANNER ── */
+#banner{padding:2rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--surface)}
+.banner-inner{display:flex;gap:1rem}
+.marquee-track{display:flex;gap:3rem;animation:marquee 28s linear infinite;flex-shrink:0}
+.marquee-track2{animation-delay:-14s}
+.marquee-item{display:flex;align-items:center;gap:.6rem;white-space:nowrap;font-size:.85rem;font-weight:600;color:var(--muted)}
+.marquee-item svg{width:16px;height:16px;color:var(--gold)}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+/* ── SECTIONS ── */
+section{padding:100px 2rem}
+.container{max-width:1160px;margin:0 auto}
+.section-badge{display:inline-block;background:var(--gold-dim);border:1px solid var(--border-gold);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border-radius:100px;margin-bottom:1.2rem}
+.section-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:1rem}
+.section-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.75}
+.text-gold{color:var(--gold)}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* ── HOW IT WORKS ── */
+#how{background:var(--bg)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:all .35s;cursor:default}
+.step-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-dim) 0%,transparent 60%);opacity:0;transition:opacity .35s}
+.step-card:hover{border-color:var(--border-gold);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.step-card:hover::before{opacity:1}
+.step-num{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:1.2rem;opacity:.7}
+.step-icon{width:48px;height:48px;background:var(--gold-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;border:1px solid var(--border-gold)}
+.step-title{font-size:1.1rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em}
+.step-desc{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* ── COMPARISON ── */
+#compare{background:var(--surface)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.compare-card{border-radius:var(--r-lg);padding:2.5rem;position:relative;overflow:hidden}
+.compare-bad{background:var(--card);border:1px solid rgba(215,38,56,0.15)}
+.compare-good{background:linear-gradient(135deg,rgba(212,175,55,0.07) 0%,rgba(5,5,5,0) 100%);border:1px solid var(--border-gold);box-shadow:0 0 60px rgba(212,175,55,0.06)}
+.compare-head{font-size:1rem;font-weight:700;margin-bottom:1.75rem;display:flex;align-items:center;gap:.6rem}
+.compare-bad .compare-head{color:#ff4757}
+.compare-good .compare-head{color:var(--gold)}
+.compare-item{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1rem;font-size:.9rem;line-height:1.5}
+.compare-bad .compare-item{color:rgba(255,255,255,.6)}
+.compare-good .compare-item{color:rgba(255,255,255,.85)}
+.ci-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0;margin-top:2px;font-weight:800}
+.ci-bad{background:rgba(215,38,56,0.2);color:#ff4757}
+.ci-good{background:rgba(212,175,55,0.2);color:var(--gold)}
+
+/* ── TIMELINE ── */
+#timeline{background:var(--bg)}
+.timeline-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3.5rem;position:relative}
+.timeline-row::before{content:'';position:absolute;top:40px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold),transparent);opacity:.3}
+.tl-item{text-align:center;padding:0 1rem;position:relative}
+.tl-circle{width:80px;height:80px;border-radius:50%;background:var(--card);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;position:relative;z-index:1;transition:all .3s}
+.tl-circle:hover{background:var(--gold-dim);box-shadow:0 0 30px var(--gold-glow);transform:scale(1.05)}
+.tl-week{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.tl-title{font-size:1rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em}
+.tl-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* ── SERVICES ── */
+#services{background:var(--surface)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem 1.5rem;transition:all .3s}
+.svc-card:hover{border-color:var(--border-gold);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.svc-icon{width:44px;height:44px;background:var(--gold-dim);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1rem;border:1px solid var(--border-gold)}
+.svc-title{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.svc-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3.5rem}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:2rem;position:relative;transition:all .3s}
+.testi-card:hover{border-color:var(--border-gold);transform:translateY(-3px)}
+.testi-quote{font-size:.9rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:1.5rem;font-style:italic}
+.testi-quote::before{content:'\201C';font-size:3rem;color:var(--gold);opacity:.3;display:block;line-height:.6;margin-bottom:.5rem}
+.testi-author{display:flex;align-items:center;gap:.8rem}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--gold)}
+.testi-name{font-size:.88rem;font-weight:700}
+.testi-handle{font-size:.78rem;color:var(--muted)}
+.testi-stars{color:var(--gold);font-size:.8rem;margin-bottom:1rem;letter-spacing:2px}
+
+/* ── FAQ ── */
+#faq{background:var(--surface)}
+.faq-list{max-width:720px;margin:3.5rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .3s}
+.faq-item.open{border-color:var(--border-gold)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;font-size:.95rem;font-weight:600;gap:1rem;user-select:none}
+.faq-chevron{width:22px;height:22px;background:var(--gold-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s;color:var(--gold);font-size:.7rem;font-weight:800}
+.faq-item.open .faq-chevron{transform:rotate(180deg);background:var(--gold);color:#000}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:1.25rem}
+.faq-a p{font-size:.9rem;color:var(--muted);line-height:1.75;padding:0 1.5rem}
+
+/* ── FINAL CTA ── */
+#cta{background:var(--bg);position:relative;overflow:hidden}
+#cta .orb-gold{opacity:.2;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.cta-inner{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto}
+.countdown{display:flex;gap:1.5rem;justify-content:center;margin:2.5rem 0}
+.cd-block{text-align:center;background:var(--card);border:1px solid var(--border-gold);border-radius:10px;padding:.9rem 1.25rem;min-width:70px}
+.cd-num{font-size:2rem;font-weight:900;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.cd-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.cd-sep{font-size:1.5rem;font-weight:700;color:var(--gold);align-self:center;margin-top:-.5rem}
+.cta-note{font-size:.83rem;color:var(--muted);margin-top:1rem}
+
+/* ── FOOTER ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 2rem}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{font-size:1rem;font-weight:800;color:var(--gold)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:.83rem;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:.78rem;color:var(--muted)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(20px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:all .3s}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--card);border:1px solid var(--border-gold);border-radius:var(--r-lg);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:2.5rem;position:relative}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;width:32px;height:32px;background:rgba(255,255,255,.08);border:none;border-radius:8px;color:var(--text);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal-close:hover{background:var(--red);color:#fff}
+.modal-title{font-size:1.5rem;font-weight:800;margin-bottom:.4rem;letter-spacing:-.02em}
+.modal-sub{font-size:.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-label{display:block;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.form-input,.form-select,.form-textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;color:var(--text);font-family:'Manrope',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);background:rgba(212,175,55,.04)}
+.form-select{cursor:pointer}
+.form-select option{background:var(--card)}
+.form-textarea{resize:vertical;min-height:90px;line-height:1.6}
+.form-submit{width:100%;background:var(--red);color:#fff;border:none;border-radius:10px;padding:1rem;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s;margin-top:.5rem;font-family:'Manrope',sans-serif;letter-spacing:.01em}
+.form-submit:hover{background:#e8293b;box-shadow:0 0 40px var(--red-glow)}
+.form-note{text-align:center;font-size:.78rem;color:var(--muted);margin-top:.75rem}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+[data-delay="1"]{transition-delay:.1s}
+[data-delay="2"]{transition-delay:.2s}
+[data-delay="3"]{transition-delay:.3s}
+[data-delay="4"]{transition-delay:.4s}
+[data-delay="5"]{transition-delay:.5s}
+[data-delay="6"]{transition-delay:.6s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .steps-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .compare-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .timeline-row{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .timeline-row::before{display:none}
+  .hero-stats{gap:1.5rem}
+  .stat-divider{display:none}
+}
+@media(max-width:640px){
+  .steps-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .nav-mobile{display:flex}
+  .hero-h1{font-size:2.2rem}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .form-row{grid-template-columns:1fr}
+  section{padding:70px 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="logo-dot"></div>
+    Shadow <span>OS</span>
+  </div>
+  <div class="nav-links">
+    <a href="#" onclick="openModal();return false" class="nav-cta">Book a Call</a>
+  </div>
+  <div class="nav-mobile" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="orb orb-gold"></div>
+    <div class="orb orb-red"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Now accepting creator applications — 2 spots open
+    </div>
+    <h1 class="hero-h1">
+      <span class="line-white">We Build the Business.</span>
+      <span class="line-gold">You Build the Audience.</span>
+    </h1>
+    <p class="hero-p">We become your invisible backend team. We create your digital product, build the funnel, grow your email list, and handle everything — while you keep posting. Revenue split 50/50. No upfront cost. No risk.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openModal()">
+        &#128197; Book Free Strategy Call
+      </button>
+      <a href="#how" class="btn-outline">
+        See How It Works &#8594;
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" data-target="47">0</div>
+        <div class="stat-label">Creator Partners</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num" data-target="14">0</div>
+        <div class="stat-label">Day Launch</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">50/50</div>
+        <div class="stat-label">Revenue Split</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">Upfront Cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div id="banner">
+  <div class="banner-inner">
+    <div class="marquee-track" id="m1"></div>
+    <div class="marquee-track marquee-track2" id="m2"></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">The Process</div>
+      <h2 class="section-title fade-up" data-delay="1">How Shadow OS Works</h2>
+      <p class="section-sub fade-up" data-delay="2">From discovery to revenue in 6 structured steps. We handle all of it.</p>
+    </div>
+    <div class="steps-grid" style="margin-top:3.5rem">
+      <div class="step-card fade-up" data-delay="2">
+        <div class="step-num">Step 01</div>
+        <div class="step-icon">&#129504;</div>
+        <div class="step-title">Audience Research</div>
+        <div class="step-desc">Deep intelligence on your audience — what they want, what they'll pay for, and what product will resonate. No guessing.</div>
+      </div>
+      <div class="step-card fade-up" data-delay="3">
+        <div class="step-num">Step 02</div>
+        <div class="step-icon">&#128736;</div>
+        <div class="step-title">Product Creation</div>
+        <div class="step-desc">We build the digital product, write the copy, design the packaging. Ebooks, courses, templates, communities — whatever fits best.</div>
+      </div>
+      <div class="step-card fade-up" data-delay="4">
+        <div class="step-num">Step 03</div>
+        <div class="step-icon">&#128640;</div>
+        <div class="step-title">Full Launch</div>
+        <div class="step-desc">Landing page, checkout, email list, automation, analytics — all deployed. You announce it to your audience. We handle the rest.</div>
+      </div>
+      <div class="step-card fade-up" data-delay="5">
+        <div class="step-num">Step 04</div>
+        <div class="step-icon">&#128200;</div>
+        <div class="step-title">Optimization</div>
+        <div class="step-desc">After launch we run A/B tests, optimize pricing, improve conversion rates, and scale what's working. Continuous improvement built in.</div>
+      </div>
+      <div class="step-card fade-up" data-delay="6">
+        <div class="step-num">Step 05</div>
+        <div class="step-icon">&#128181;</div>
+        <div class="step-title">Revenue Sharing</div>
+        <div class="step-desc">Every month, revenue is split 50/50 via Stripe. You see exactly what came in, what your cut is, and how we're growing it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">The Difference</div>
+      <h2 class="section-title fade-up" data-delay="1">Without Us vs. <span class="text-gold">With Us</span></h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card compare-bad fade-up" data-delay="1">
+        <div class="compare-head">&#10060; Without Shadow OS</div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>Creating content daily with no income from it</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>No digital product despite an engaged audience</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>No email list — you own nothing</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>No funnel, no system, no backend</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>No time to build — content already takes everything</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>Audience grows but income stays flat at $0</div></div>
+        <div class="compare-item"><div class="ci-icon ci-bad">&#10005;</div><div>Relying on brand deals that pay once and disappear</div></div>
+      </div>
+      <div class="compare-card compare-good fade-up" data-delay="2">
+        <div class="compare-head">&#10024; With Shadow OS</div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>Passive income running from a product you didn't build</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>Digital product live within 14 days of agreeing</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>Growing email list you own permanently</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>Complete funnel, checkout, and automation — all set up</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>You just keep posting — we handle everything else</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>50% of recurring revenue, paid monthly</div></div>
+        <div class="compare-item"><div class="ci-icon ci-good">&#10003;</div><div>Zero upfront cost. Zero financial risk. Zero extra work.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">The Timeline</div>
+      <h2 class="section-title fade-up" data-delay="1">From Agreement to <span class="text-gold">Revenue</span></h2>
+      <p class="section-sub fade-up" data-delay="2">Most creators see their first sale within 3 weeks of starting.</p>
+    </div>
+    <div class="timeline-row">
+      <div class="tl-item fade-up" data-delay="1">
+        <div class="tl-circle"><span style="font-size:1.5rem">&#128221;</span></div>
+        <div class="tl-week">Week 1</div>
+        <div class="tl-title">Product Built</div>
+        <div class="tl-desc">Product designed, written, and packaged. Landing page and checkout live. You approve everything.</div>
+      </div>
+      <div class="tl-item fade-up" data-delay="2">
+        <div class="tl-circle"><span style="font-size:1.5rem">&#128293;</span></div>
+        <div class="tl-week">Week 2</div>
+        <div class="tl-title">Launch Day</div>
+        <div class="tl-desc">You post to your audience. Email sequence fires. First sales arrive. Email list starts growing.</div>
+      </div>
+      <div class="tl-item fade-up" data-delay="3">
+        <div class="tl-circle"><span style="font-size:1.5rem">&#128201;</span></div>
+        <div class="tl-week">Week 3</div>
+        <div class="tl-title">Optimization</div>
+        <div class="tl-desc">We A/B test pricing, improve the funnel, scale what's converting. Revenue curve starts climbing.</div>
+      </div>
+      <div class="tl-item fade-up" data-delay="4">
+        <div class="tl-circle"><span style="font-size:1.5rem">&#128184;</span></div>
+        <div class="tl-week">Week 4</div>
+        <div class="tl-title">First Payout</div>
+        <div class="tl-desc">Month one revenue split. You get 50% of everything that came in. Stripe to your account.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">What We Handle</div>
+      <h2 class="section-title fade-up" data-delay="1">Every Piece of the <span class="text-gold">Backend</span></h2>
+      <p class="section-sub fade-up" data-delay="2">We build and run the entire business side so you never have to think about it.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card fade-up" data-delay="1"><div class="svc-icon">&#128196;</div><div class="svc-title">Digital Product Creation</div><div class="svc-desc">Ebooks, guides, templates, mini-courses. Built end-to-end in your voice.</div></div>
+      <div class="svc-card fade-up" data-delay="2"><div class="svc-icon">&#128681;</div><div class="svc-title">Sales Funnels</div><div class="svc-desc">Complete funnel from lead magnet to checkout to upsell — all automated.</div></div>
+      <div class="svc-card fade-up" data-delay="3"><div class="svc-icon">&#128140;</div><div class="svc-title">Email Marketing</div><div class="svc-desc">Welcome sequences, nurture campaigns, launch emails, and retention flows.</div></div>
+      <div class="svc-card fade-up" data-delay="4"><div class="svc-icon">&#128421;</div><div class="svc-title">Landing Pages</div><div class="svc-desc">High-converting pages that turn your audience into buyers. Mobile-first design.</div></div>
+      <div class="svc-card fade-up" data-delay="1"><div class="svc-icon">&#128202;</div><div class="svc-title">Analytics & Tracking</div><div class="svc-desc">Revenue dashboards, conversion tracking, audience insights. You see everything.</div></div>
+      <div class="svc-card fade-up" data-delay="2"><div class="svc-icon">&#9881;</div><div class="svc-title">Product Optimization</div><div class="svc-desc">Ongoing A/B tests on pricing, copy, and design to compound your revenue.</div></div>
+      <div class="svc-card fade-up" data-delay="3"><div class="svc-icon">&#127775;</div><div class="svc-title">Creator Strategy</div><div class="svc-desc">Content-to-product alignment so your posts naturally drive sales.</div></div>
+      <div class="svc-card fade-up" data-delay="4"><div class="svc-icon">&#128640;</div><div class="svc-title">Launch Management</div><div class="svc-desc">Full launch playbook, timeline, and execution. Coordinated for maximum impact.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">Results</div>
+      <h2 class="section-title fade-up" data-delay="1">What Creators Are Saying</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up" data-delay="1">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-quote">I had 67,000 followers and was making nothing from them. In 3 weeks Shadow OS had a product live and I made $1,800 in my first launch. I literally just posted the announcement — they handled everything else.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div><div class="testi-name">Aisha K.</div><div class="testi-handle">@aishafitlife &bull; 67K followers</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" data-delay="2">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-quote">I was skeptical because there was zero cost upfront — felt too good to be true. But the product they built for my audience was genuinely better than anything I would have made myself. Month 2 I made $3,200.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RS</div>
+          <div><div class="testi-name">Rajan S.</div><div class="testi-handle">@rajanfreelance &bull; 42K followers</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" data-delay="3">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-quote">My content schedule didn't change at all. I post the same things I always did. The difference is now there's a backend that turns those posts into revenue. Best decision I've made for my creator business.</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ML</div>
+          <div><div class="testi-name">Maya L.</div><div class="testi-handle">@mayaparents &bull; 28K followers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-badge fade-up">FAQ</div>
+      <h2 class="section-title fade-up" data-delay="1">Everything You Need to Know</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="orb orb-gold" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);animation:none"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-badge fade-up">Limited Spots</div>
+      <h2 class="section-title fade-up" data-delay="1">Ready to Turn Your Audience<br><span class="text-gold">Into Income?</span></h2>
+      <p class="section-sub fade-up" data-delay="2">We only work with 3 creators at a time. When a spot opens, it fills fast. Book your free strategy call — no commitment, no pitch, just a conversation about whether this is the right fit.</p>
+      <div class="countdown fade-up" data-delay="3">
+        <div class="cd-block"><div class="cd-num" id="cd-d">07</div><div class="cd-label">Days</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><div class="cd-num" id="cd-h">14</div><div class="cd-label">Hours</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><div class="cd-num" id="cd-m">32</div><div class="cd-label">Mins</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><div class="cd-num" id="cd-s">09</div><div class="cd-label">Secs</div></div>
+      </div>
+      <div class="fade-up" data-delay="4">
+        <button class="btn-primary" onclick="openModal()" style="font-size:1.1rem;padding:1rem 2.5rem">
+          &#128197; Book My Free Strategy Call
+        </button>
+        <p class="cta-note">15-minute call &bull; No commitment &bull; Response within 2 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Shadow OS</div>
+    <div class="footer-links">
+      <a href="#how">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#faq">FAQ</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 Shadow OS. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <div class="modal-title">Book Your Free Strategy Call</div>
+    <div class="modal-sub">15 minutes. No pitch. Just an honest conversation about whether Shadow OS is the right move for your audience.</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-input" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="you@email.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Instagram / TikTok Handle</label>
+      <input type="text" class="form-input" placeholder="@yourhandle">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Your Niche</label>
+        <select class="form-select form-input">
+          <option value="">Select your niche</option>
+          <option>Fitness & Health</option>
+          <option>Personal Finance</option>
+          <option>Relationships & Dating</option>
+          <option>Parenting</option>
+          <option>Freelancing & Career</option>
+          <option>Productivity</option>
+          <option>Heartbreak & Recovery</option>
+          <option>Entrepreneurship</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Follower Count</label>
+        <select class="form-select form-input">
+          <option value="">Select range</option>
+          <option>5K – 10K</option>
+          <option>10K – 25K</option>
+          <option>25K – 50K</option>
+          <option>50K – 100K</option>
+          <option>100K – 150K</option>
+          <option>150K+</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Biggest Monetization Challenge</label>
+      <textarea class="form-textarea form-input" placeholder="Tell us what's stopping you from making money from your audience right now..."></textarea>
+    </div>
+    <button class="form-submit" onclick="submitForm(this)">&#128640; Request My Strategy Call</button>
+    <p class="form-note">We'll email you within 2 hours with available times. Completely free, no obligation.</p>
+  </div>
+</div>
+
+<script>
+// ── NAVBAR
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── MARQUEE ITEMS
+const creators = [
+  '&#127942; @fitnesswithaisha — 67K',
+  '&#127942; @rajanfreelance — 42K',
+  '&#127942; @mayaparents — 28K',
+  '&#127942; @kevinlifts — 54K',
+  '&#127942; @priyacoaches — 31K',
+  '&#127942; @tombreaks9to5 — 88K',
+  '&#127942; @lauraheals — 19K',
+  '&#127942; @devnewmoney — 63K',
+];
+function buildMarquee(el) {
+  const doubled = [...creators, ...creators];
+  el.innerHTML = doubled.map(c => `<div class="marquee-item"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="4"/></svg>${c}</div>`).join('');
+}
+buildMarquee(document.getElementById('m1'));
+buildMarquee(document.getElementById('m2'));
+
+// ── FAQ DATA
+const faqs = [
+  { q: 'Is there any cost to me as a creator?', a: 'Zero. No upfront payment, no monthly fee, no hidden charges. We invest our time and resources building your business. We only make money when you make money — and we take 50% of that.' },
+  { q: 'How exactly does the 50/50 revenue split work?', a: 'All revenue flows through a Stripe account we set up together. At the end of each month, we send you a detailed revenue report showing exactly what came in and transfer 50% directly to your account. Full transparency, every time.' },
+  { q: 'What do I have to actually do?', a: 'Keep posting your content exactly as you do now. When your product is ready, you announce it to your audience (we write the announcement for you). That\'s it. Everything else — building, launching, managing, optimizing — is on us.' },
+  { q: 'How long until I see my first sale?', a: 'Most creators see sales in week 2 or 3. Week 1 is product and funnel setup. Week 2 is launch. By week 3 we\'re already optimizing. It depends on your audience size and engagement, but 14 days from start to your first sale is our standard.' },
+  { q: 'What if the product doesn\'t sell?', a: 'Then you\'ve lost nothing — no money, no time, no effort. We absorb the loss entirely. This is why we\'re selective about who we work with: we only take on creators where we\'re confident we can generate revenue. Our incentive is to make this work.' },
+  { q: 'How many creators do you work with at once?', a: 'We work with a maximum of 3 creators at any time. This is intentional — we refuse to scale the number of partnerships until we can give each creator full attention. When a spot opens, it fills within days.' },
+  { q: 'Do you work with creators from India or outside the US?', a: 'Yes, completely. We work with creators globally. Revenue is paid internationally via Stripe and Wise. Being based in India, Southeast Asia, or anywhere else is not a barrier — what matters is your audience and engagement rate.' },
+  { q: 'What makes a creator a good fit for Shadow OS?', a: 'We look for: 5K–150K followers, 3%+ engagement rate, an active niche with purchasing intent (fitness, finance, freelancing, parenting, relationships, personal development), and no existing digital product. If that sounds like you, book a call.' },
+];
+const faqList = document.getElementById('faqList');
+faqs.forEach((f, i) => {
+  const item = document.createElement('div');
+  item.className = 'faq-item fade-up';
+  item.dataset.delay = Math.min(i + 1, 6);
+  item.innerHTML = `<div class="faq-q" onclick="toggleFAQ(this)"><span>${f.q}</span><div class="faq-chevron">&#8964;</div></div><div class="faq-a"><p>${f.a}</p></div>`;
+  faqList.appendChild(item);
+});
+function toggleFAQ(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── MODAL
+function openModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+function submitForm(btn) {
+  btn.textContent = '&#9989; Call Requested — We\'ll email you within 2 hours!';
+  btn.style.background = '#1D9E75';
+  setTimeout(() => { btn.textContent = '&#128640; Request My Strategy Call'; btn.style.background = ''; }, 4000);
+}
+
+// ── COUNTDOWN
+(function() {
+  const end = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000 + 14 * 60 * 60 * 1000 + 32 * 60 * 1000);
+  function update() {
+    const diff = end - Date.now();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  update(); setInterval(update, 1000);
+})();
+
+// ── COUNTER ANIMATION
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  if (!target) return;
+  let cur = 0;
+  const inc = Math.ceil(target / 40);
+  const t = setInterval(() => {
+    cur = Math.min(cur + inc, target);
+    el.textContent = cur + (el.textContent.includes('+') ? '+' : '');
+    if (cur >= target) clearInterval(t);
+  }, 40);
+}
+
+// ── SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.dataset.target) animateCounter(e.target);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up, [data-target]').forEach(el => observer.observe(el));
+
+// ── MOBILE MENU
+function toggleMobileMenu() {
+  const links = document.querySelector('.nav-links');
+  if (!links.classList.contains('mobile-open')) {
+    links.style.display = 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'fixed';
+    links.style.top = '68px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(5,5,5,0.98)';
+    links.style.padding = '2rem';
+    links.style.gap = '1.5rem';
+    links.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+    links.style.backdropFilter = 'blur(20px)';
+    links.classList.add('mobile-open');
+  } else {
+    links.style.display = 'none';
+    links.classList.remove('mobile-open');
+  }
+}
+</script>
+</body>
+</html>
